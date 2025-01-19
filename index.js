@@ -237,10 +237,9 @@ function displayGameOver() {
     context1.textAlign = "center";
     if (score1 > score2) {
         context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
-    } else if (score2 > score1) {
+    }   
+    if (score2 > score1) {
         context1.fillText("Player 2 Wins!", gameWidth / 2, gameHeight / 2);
-    } else {
-        context1.fillText("It's a Draw!", gameWidth / 2, gameHeight / 2);
     }
     running = false;
 };
