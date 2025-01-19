@@ -12,6 +12,8 @@ const scoreText2 = document.querySelector("#scoretext2");
 // Game constants and variables
 const gameWidth = canvas1.width;
 const gameHeight = canvas1.height;
+const gameWidth2 = canvas2.width;
+const gameHeight2 = canvas2.height;
 const boardBackground = "lightgreen";
 const snakeColor1 = "red";
 const snakeColor2 = "blue";
@@ -26,8 +28,10 @@ let yVelocity2 = 0;
 let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
+let timie = 2;
 let timeLeft = 100;
 let timerInterval;
+let timieInterval
 
 // Initial snake positions for both players
 let snake1 = [
@@ -49,13 +53,22 @@ let snake2 = [
 // Event listener for key presses
 window.addEventListener("keydown", changeDirection);
 
-// Start the game when the start button is clicked
-function Glabbyclicked(){
-    gameStart();
+function Countdown(){
+    timieInterval = setInterval(() => {
+        timie--;
+        context1.fillText(timie, gameWidth / 2, gameHeight / 2);
+        context2.fillText(timie, gameWidth2 / 2, gameHeight2 / 2);
+    }, 2000);
 };
+
+//Start the game after timer
+if (timie == 0) {
+    gameStart();
+}
 
 
 function gameStart() {
+    
     running = true;
     // Update the score and timer display
     scoreText1.textContent = "Arrow-Key-Control-Red-Snake-Player 1: " + score1;
@@ -223,10 +236,12 @@ function checkGameOver() {
     }
     if (isGameOver(snake2) ) {
         context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
+        context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
         running = false;
     }
     if (isGameOver(snake1)) {
         context1.fillText("Player 2 Wins!", gameWidth / 2, gameHeight / 2);
+        context2.fillText("Player 2 Wins!", gameWidth2 / 2, gameHeight2 / 2);
         running = false;
     }
 };
@@ -237,9 +252,11 @@ function displayGameOver() {
     context1.textAlign = "center";
     if (score1 > score2) {
         context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
+        context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
     }   
     if (score2 > score1) {
         context1.fillText("Player 2 Wins!", gameWidth / 2, gameHeight / 2);
+        context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
     }
     running = false;
 };
@@ -259,6 +276,7 @@ function startTimer() {
 function resetGame(){
     score1 = 0;
     score2 = 0;
+    timie = 3;
     xVelocity1 = unitSize;
     yVelocity1 = 0;
     xVelocity2 = unitSize;
@@ -278,5 +296,5 @@ function resetGame(){
         {x: unitSize, y: gameHeight - unitSize},
         {x: 0, y: gameHeight - unitSize}
     ];
-    gameStart(); 
+    Countdown(); 
 };
