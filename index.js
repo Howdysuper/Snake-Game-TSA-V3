@@ -26,7 +26,7 @@ let yVelocity2 = 0;
 let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
-let timeLeft = 30;
+let timeLeft = 300;
 let timerInterval;
 
 // Initial snake positions for both players
