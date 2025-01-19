@@ -221,8 +221,12 @@ function checkGameOver() {
         }
         return false;
     }
-    if (isGameOver(snake1) || isGameOver(snake2)) {
-        displayGameOver();
+    if (isGameOver(snake2) ) {
+        context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
+        running = false;
+    }
+    if (isGameOver(snake1)) {
+        context1.fillText("Player 2 Wins!", gameWidth / 2, gameHeight / 2);
         running = false;
     }
 };
