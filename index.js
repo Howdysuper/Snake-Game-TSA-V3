@@ -49,8 +49,11 @@ let snake2 = [
 // Event listener for key presses
 window.addEventListener("keydown", changeDirection);
 
-// Start the game
-gameStart();
+// Start the game when the start button is clicked
+function Glabbyclicked(){
+    gameStart();
+};
+
 
 function gameStart() {
     running = true;
@@ -65,7 +68,7 @@ function gameStart() {
     nextTick();
     // Start the timer countdown
     startTimer();
-}
+};
 
 function nextTick() {
     if (running) {
@@ -90,13 +93,13 @@ function nextTick() {
         // Display game over message
         displayGameOver();
     }
-}
+};
 
 function clearBoard(context) {
     // Fill the canvas with the background color
     context.fillStyle = boardBackground;
     context.fillRect(0, 0, gameWidth, gameHeight);
-}
+};
 
 function createFood() {
     // Generate random coordinates for the food
@@ -108,7 +111,7 @@ function createFood() {
     foodX = randomFood(0, gameWidth - unitSize);
     foodY = randomFood(0, gameHeight - unitSize);
     console.log(foodX, foodY);
-}
+};
 
 function drawFood() {
     // Draw the food on both canvases
@@ -116,7 +119,7 @@ function drawFood() {
     context1.fillRect(foodX, foodY, unitSize, unitSize);
     context2.fillStyle = points;
     context2.fillRect(foodX, foodY, unitSize, unitSize);
-}
+};
 
 function moveSnake(snake, xVelocity, yVelocity) {
     // Create a new head for the snake
@@ -136,7 +139,7 @@ function moveSnake(snake, xVelocity, yVelocity) {
         // Remove the last part of the snake to simulate movement
         snake.pop();
     }
-}
+};
 
 function drawSnake(context, snake, color) {
     // Draw each part of the snake
@@ -146,7 +149,7 @@ function drawSnake(context, snake, color) {
         context.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
         context.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
     });
-}
+};
 
 function changeDirection(event) {
     // Get the key code of the pressed key
@@ -200,7 +203,7 @@ function changeDirection(event) {
             yVelocity2 = unitSize;
             break;
     }
-}
+};
 
 function checkGameOver() {
     function isGameOver(snake) {
@@ -222,7 +225,7 @@ function checkGameOver() {
         displayGameOver();
         running = false;
     }
-}
+};
 
 function displayGameOver() {
     context1.font = "50px MV Boli";
@@ -236,7 +239,7 @@ function displayGameOver() {
         context1.fillText("It's a Draw!", gameWidth / 2, gameHeight / 2);
     }
     running = false;
-}
+};
 
 function startTimer() {
     timerInterval = setInterval(() => {
@@ -248,4 +251,29 @@ function startTimer() {
             displayGameOver();
         }
     }, 1000);
-}
+};
+
+function resetGame(){
+    score1 = 0;
+    score2 = 0;
+    xVelocity1 = unitSize;
+    yVelocity1 = 0;
+    xVelocity2 = unitSize;
+    yVelocity2 = 0;
+    timeLeft = 30;
+    snake1 = [
+        {x: unitSize * 4, y: 0},
+        {x: unitSize * 3, y: 0},
+        {x: unitSize * 2, y: 0},
+        {x: unitSize, y: 0},
+        {x: 0, y: 0}
+    ];
+    snake2 = [
+        {x: unitSize * 4, y: gameHeight - unitSize},
+        {x: unitSize * 3, y: gameHeight - unitSize},
+        {x: unitSize * 2, y: gameHeight - unitSize},
+        {x: unitSize, y: gameHeight - unitSize},
+        {x: 0, y: gameHeight - unitSize}
+    ];
+    gameStart(); 
+};
