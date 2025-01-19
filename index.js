@@ -58,8 +58,8 @@ function Glabbyclicked(){
 function gameStart() {
     running = true;
     // Update the score and timer display
-    scoreText1.textContent = "Player 1: " + score1;
-    scoreText2.textContent = "Player 2: " + score2;
+    scoreText1.textContent = "Arrow-Key-Control-Red-Snake-Player 1: " + score1;
+    scoreText2.textContent = "WASD-Control-Blue-Snake-Player 2: " + score2;
     timerText.textContent = "Time: " + timeLeft;
     // Create and draw the initial food
     createFood();
