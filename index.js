@@ -62,7 +62,7 @@ function Countdown(){
 };
 
 //Start the game after timer
-if (timie == 0) {
+if (timie <= 0) {
     gameStart();
 }
 
