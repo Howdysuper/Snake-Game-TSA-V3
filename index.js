@@ -26,7 +26,7 @@ let yVelocity2 = 0;
 let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
-let timeLeft = 300;
+let timeLeft = 100;
 let timerInterval;
 
 // Initial snake positions for both players
@@ -263,7 +263,7 @@ function resetGame(){
     yVelocity1 = 0;
     xVelocity2 = unitSize;
     yVelocity2 = 0;
-    timeLeft = 300;
+    timeLeft = 100;
     snake1 = [
         {x: unitSize * 4, y: 0},
         {x: unitSize * 3, y: 0},
