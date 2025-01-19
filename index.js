@@ -263,7 +263,7 @@ function resetGame(){
     yVelocity1 = 0;
     xVelocity2 = unitSize;
     yVelocity2 = 0;
-    timeLeft = 30;
+    timeLeft = 300;
     snake1 = [
         {x: unitSize * 4, y: 0},
         {x: unitSize * 3, y: 0},
