@@ -28,7 +28,7 @@ let yVelocity2 = 0;
 let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
-let timie = 2;
+let timie = 3;
 let timeLeft = 100;
 let timerInterval;
 let timieInterval
