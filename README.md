@@ -1,8 +1,8 @@
 # 2-PLAYER-SNAKE-GAME-TSA-V3
 # Part of the TSA TEAM GAME PROJECT.
-# Please read the license.
-# The 3rd version/prototype for the snake game idea.
 # Steps to play the game below.
+# The 3rd version/prototype for the snake game idea.
+# Please read the license.
 Step 0: PLEASE READ THE STEP BELOW <br />
  <br />
 Step 1: Please make a github account <br />
