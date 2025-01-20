@@ -29,7 +29,7 @@ let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
 let timie = 3;
-let timeLeft = 200;
+let timeLeft = 30;
 let timerInterval;
 let timieInterval
 
@@ -298,7 +298,8 @@ function resetGame(){
     yVelocity1 = 0;
     xVelocity2 = unitSize;
     yVelocity2 = 0;
-    timeLeft = 200;
+    timeLeft = 30;
+    clearInterval(timerInterval);
     snake1 = [
         {x: unitSize * 4, y: 0},
         {x: unitSize * 3, y: 0},
