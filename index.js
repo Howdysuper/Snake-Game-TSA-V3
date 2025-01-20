@@ -215,10 +215,10 @@ function changeDirection(event) {
 
 function checkGameOver() {
     context1.font = "50px MV Boli";
-    context1.fillStyle = "red";
+    context1.fillStyle = "Black";
     context1.textAlign = "center";
     context2.font = "50px MV Boli";
-    context2.fillStyle = "blue";
+    context2.fillStyle = "Black";
     context2.textAlign = "center";
     function isGameOver(snake) {
         switch(true) {
@@ -256,10 +256,10 @@ function checkGameOver() {
 
 function displayGameOver() {
     context1.font = "50px MV Boli";
-    context1.fillStyle = "red";
+    context1.fillStyle = "Black";
     context1.textAlign = "center";
     context2.font = "50px MV Boli";
-    context2.fillStyle = "blue";
+    context2.fillStyle = "Black";
     context2.textAlign = "center";
     if (score1 > score2) {
         context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
