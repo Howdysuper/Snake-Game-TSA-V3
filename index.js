@@ -29,7 +29,7 @@ let foodX, foodY;
 let score1 = 0;
 let score2 = 0;
 let timie = 3;
-let timeLeft = 100;
+let timeLeft = 200;
 let timerInterval;
 let timieInterval
 
@@ -53,18 +53,13 @@ let snake2 = [
 // Event listener for key presses
 window.addEventListener("keydown", changeDirection);
 
-function Countdown(){
-    timieInterval = setInterval(() => {
-        timie--;
-        context1.fillText(timie, gameWidth / 2, gameHeight / 2);
-        context2.fillText(timie, gameWidth2 / 2, gameHeight2 / 2);
-    }, 2000);
-};
+function gameStart1(){
+    setTimeout(gameStart, 1000); // 2000 milliseconds = 2 seconds
+}
+
 
 //Start the game after timer
-if (timie <= 0) {
-    gameStart();
-}
+
 
 
 function gameStart() {
@@ -219,6 +214,12 @@ function changeDirection(event) {
 };
 
 function checkGameOver() {
+    context1.font = "50px MV Boli";
+    context1.fillStyle = "red";
+    context1.textAlign = "center";
+    context2.font = "50px MV Boli";
+    context2.fillStyle = "blue";
+    context2.textAlign = "center";
     function isGameOver(snake) {
         switch(true) {
             case(snake[0].x < 0):
@@ -235,8 +236,8 @@ function checkGameOver() {
         return false;
     }
     if (isGameOver(snake2) ) {
-        context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
-        context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
+        context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 3);
+        context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 3);
         running = false;
     }
     if (isGameOver(snake1)) {
@@ -244,12 +245,22 @@ function checkGameOver() {
         context2.fillText("Player 2 Wins!", gameWidth2 / 2, gameHeight2 / 2);
         running = false;
     }
+    if (isGameOver(snake1 && snake2)) {
+        context1.fillText("It's a Draw!", gameWidth / 2, gameHeight / 1.5);
+        context2.fillText("It's a Draw!", gameWidth2 / 2, gameHeight2 / 1.5);
+        running = false;
+    }
+   
+    
 };
 
 function displayGameOver() {
     context1.font = "50px MV Boli";
-    context1.fillStyle = "black";
+    context1.fillStyle = "red";
     context1.textAlign = "center";
+    context2.font = "50px MV Boli";
+    context2.fillStyle = "blue";
+    context2.textAlign = "center";
     if (score1 > score2) {
         context1.fillText("Player 1 Wins!", gameWidth / 2, gameHeight / 2);
         context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
@@ -257,6 +268,12 @@ function displayGameOver() {
     if (score2 > score1) {
         context1.fillText("Player 2 Wins!", gameWidth / 2, gameHeight / 2);
         context2.fillText("Player 1 Wins!", gameWidth2 / 2, gameHeight2 / 2);
+    }
+    if (score1 && score2 >= 1 && score1 == score2){
+        context1.fillText("It's a draw!", gameWidth / 2, gameHeight / 2);
+        context2.fillText("It's a draw!", gameWidth2 / 2, gameHeight2 / 2);
+
+
     }
     running = false;
 };
@@ -281,7 +298,7 @@ function resetGame(){
     yVelocity1 = 0;
     xVelocity2 = unitSize;
     yVelocity2 = 0;
-    timeLeft = 100;
+    timeLeft = 200;
     snake1 = [
         {x: unitSize * 4, y: 0},
         {x: unitSize * 3, y: 0},
@@ -296,5 +313,5 @@ function resetGame(){
         {x: unitSize, y: gameHeight - unitSize},
         {x: 0, y: gameHeight - unitSize}
     ];
-    Countdown(); 
+    gameStart1(); 
 };
